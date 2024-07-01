@@ -56,7 +56,7 @@ import dotenvFlow from 'dotenv-flow';
 dotenvFlow.config();
 ```
 
-Alternatively, you can use the default config entry point that allows you to configure **dotenv-flow** using command switch flags or predefined environment variables:
+Alternatively, you have the option to utilize the default configuration entry point, which enables configuring dotenv-flow through command-line switch flags or predefined environment variables.
 
 ```js
 require('dotenv-flow/config');
@@ -168,7 +168,7 @@ database pass: 1qa2ws3ed4rf5tg6yh
 database name: application_storage
 ```
 
-Note that the `.env*.local` files should be ignored by your version control system (refer the [Files under version control](#files-under-version-control) section below to learn more), and you should have the `.env.production.local` file only on your production deployment machine.
+Ensure that your version control system ignores .env*.local files (refer to the Files under version control section below for details), and reserve the .env.production.local file exclusively for your production deployment environment.
 
 
 ### `NODE_ENV`-specific env files
@@ -236,13 +236,16 @@ Refer to the [`dotenv-flow/config` options](#dotenv-flowconfig-options) section 
 
 ## Files under version control
 
-The main point here is not to commit production database passwords, API keys and other sensitive things to your source code repository,
-but it's still nice to have default database connections, ports, hosts, etc., for development and testing purposes to keep your code clean and simple.
+The key consideration here is to avoid committing sensitive information like production database passwords and API keys to your source code repository.
+However, it's beneficial to maintain default configurations such as database connections, ports, and hosts for development and testing, ensuring clarity and simplicity in your codebase.
 
 Understanding the above, we have the following approach:
 
 You can keep all the fallback values in the default `.env` file, that (if exists) will always be loaded by default.
-Also, it is a good place to have all the application used environment variables there, thus having a reference of environment variables that are used by your application on the whole.
+Also, it is beneficial to consolidate all the environment variables used by your application in one place, providing a comprehensive reference for your application's environment.
+
+Additionally, consolidating all the environment variables used by your application in one place serves as a comprehensive reference for understanding your application's environment variables.
+
 So it is a good reason to share the `.env` file with other developers in your team, but keep all the sensitive data on your own (or production) machine locally in the `.env*.local` files.
 
 It is not necessary, but also a good practice to use `NODE_ENV` to control the environment to run your application in.

@@ -3,8 +3,6 @@
     "target": "ES2019",
     "module": "CommonJS",
     "noEmit": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
     "strict": true,
     "strictFunctionTypes": true,
     "strictNullChecks": true,
