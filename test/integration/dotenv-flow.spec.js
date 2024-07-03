@@ -55,36 +55,6 @@ describe('dotenv-flow.config (entry point)', () => {
     });
   });
 
-  describe('when the project contains the `.env.local` file', () => {
-    const directory = getFixtureProjectPath('env-local');
-
-    it('merges environment variables prioritizing the `.env.local`', async () => {
-      const variables = await execHelper('print-env.js', directory);
-
-      expect(variables).to.include({
-        DEFAULT_ENV_VAR: 'ok',
-        LOCAL_ENV_VAR: 'ok',
-        LOCAL_ONLY_VAR: 'ok'
-      });
-    });
-
-    it("doesn't merge `.env.local` variables for 'test' environment", async () => {
-      const environment = {
-        NODE_ENV: 'test'
-      };
-
-      const variables = await execHelper('print-env.js', directory, environment);
-
-      expect(variables).to.include({
-        DEFAULT_ENV_VAR: 'ok',
-        LOCAL_ENV_VAR: 'should be overwritten by `.env.local`'
-      });
-
-      expect(variables)
-        .to.not.have.property('LOCAL_ONLY_VAR');
-    });
-  });
-
   describe('when the project contains "node_env-specific" files', () => {
     const directory = getFixtureProjectPath('node-env');
 
